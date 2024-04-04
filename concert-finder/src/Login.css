@@ -1,6 +1,6 @@
 .Login {
     width: 50%;
-    height: 50vh;
+    height: 60vh;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -12,11 +12,13 @@
     background-color: #e1a2ff;
     border-radius: 20px;
     color: white;
+    align-content: center;
 }
 
 .right-side {
     grid-column: 2;
     color: #e1a2ff;
+    align-content: center;
 }
 
 .Welcome {
@@ -28,7 +30,6 @@
 .UserLogin {
     font-weight: 600;
     font-size: x-large;
-    margin: 50px 10px 10px 10px;
 }
 
 .login-info {

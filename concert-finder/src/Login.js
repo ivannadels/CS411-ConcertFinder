@@ -7,7 +7,7 @@ const Login = () => {
                 <div className="Welcome">
                 Welcome to website name
                 </div>
-                <div>
+                <div style={{margin: 20,}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra urna ac auctor gravida. Nullam cursus id odio sed varius. Morbi volutpat tortor dictum, rhoncus mi at, fermentum eros. 
                 </div>
                 
