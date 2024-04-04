@@ -1,4 +1,5 @@
 import './Login.css';
+import { VscAccount } from "react-icons/vsc";
 
 const Login = () => {
     return (
@@ -13,6 +14,7 @@ const Login = () => {
                 
             </div>
             <div className="right-side">
+                <VscAccount style={{height: 30, width: 30}}></VscAccount>
                 <div className="UserLogin">
                     User Login
                 </div>
