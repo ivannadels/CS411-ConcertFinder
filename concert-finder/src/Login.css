@@ -39,6 +39,11 @@
     font-size: x-large;
 }
 
+.login-info::placeholder {
+    color: white;
+    font-weight: 700;
+}
+
 .login-info {
     background: linear-gradient(90deg,#f1ee8e, #e1a2ff);
     height: 15px;
