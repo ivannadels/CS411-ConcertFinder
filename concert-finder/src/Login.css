@@ -1,0 +1,45 @@
+.Login {
+    width: 50%;
+    height: 50vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 20px;
+}
+
+.left-side {
+    grid-column: 1;
+    background-color: #e1a2ff;
+    border-radius: 20px;
+    color: white;
+}
+
+.right-side {
+    grid-column: 2;
+    color: #e1a2ff;
+}
+
+.Welcome {
+    font-size: calc(18px + 2vmin);
+    font-weight: 700;
+    margin: 15px;
+}
+
+.UserLogin {
+    font-weight: 600;
+    font-size: x-large;
+    margin: 50px 10px 10px 10px;
+}
+
+.login-info {
+    background: linear-gradient(90deg,#f1ee8e, #e1a2ff);
+    height: 15px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin: 10px;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
