@@ -17,7 +17,7 @@ const Login = () => {
                 
             </div>
             <div className="right-side">
-                <VscAccount style={{height: 30, width: 30}}></VscAccount>
+                <VscAccount style={{height: 30, width: 30, color: '#f1ee8e'}}></VscAccount>
                 <div className="UserLogin">
                     User Login
                 </div>
