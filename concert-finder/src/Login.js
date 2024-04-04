@@ -11,13 +11,18 @@ const Login = () => {
                 <div className="Welcome">
                 Welcome to website name
                 </div>
-                <div style={{margin: 20,}}>
+                <div style={{margin: 20}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra urna ac auctor gravida. Nullam cursus id odio sed varius. Morbi volutpat tortor dictum, rhoncus mi at, fermentum eros. 
                 </div>
                 
             </div>
             <div className="right-side">
-                <VscAccount style={{height: 30, width: 30, color: '#f1ee8e'}}></VscAccount>
+                <VscAccount 
+                    style={{
+                        height: 30, 
+                        width: 30, 
+                        color: '#f1ee8e'}}>
+                    </VscAccount>
                 <div className="UserLogin">
                     User Login
                 </div>

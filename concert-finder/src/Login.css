@@ -6,8 +6,8 @@
     width: 228vh;
 }
 .Login {
-    width: 50%;
-    height: 60vh;
+    max-width: 550px;
+    min-height: 60vh;
     background-color: white;
     display: inline-grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -17,6 +17,7 @@
 .left-side {
     grid-column: 1;
     background: linear-gradient(90deg,#f1ee8e, #e1a2ff);
+    box-shadow:  inset -4px -4px 6px 0 rgba(255,255,255,.4), inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
     border-radius: 20px;
     color: white;
     align-content: center;
