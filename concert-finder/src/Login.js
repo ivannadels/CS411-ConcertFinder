@@ -1,9 +1,12 @@
+import React from 'react';
 import './Login.css';
 import { VscAccount } from "react-icons/vsc";
+import background from "./imgs/concert-img.png"
 
 const Login = () => {
     return (
-        <div className="Login"> 
+        <div className="background" style={{ backgroundImage: `url(${background})`}}>
+           <div className="Login"> 
             <div className="left-side">
                 <div className="Welcome">
                 Welcome to website name
@@ -34,7 +37,8 @@ const Login = () => {
                 </input>
             </div>
         </div>
+      </div>
     )
-}
+}      
 
 export default Login;

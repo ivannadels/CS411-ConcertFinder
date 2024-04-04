@@ -1,15 +1,22 @@
+.background {
+    background-position: top center;
+    background-size: cover;
+    align-content: center;
+    height: 100vh;
+    width: 228vh;
+}
 .Login {
     width: 50%;
     height: 60vh;
     background-color: white;
-    display: grid;
+    display: inline-grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     border-radius: 20px;
 }
 
 .left-side {
     grid-column: 1;
-    background-color: #e1a2ff;
+    background: linear-gradient(90deg,#f1ee8e, #e1a2ff);
     border-radius: 20px;
     color: white;
     align-content: center;
