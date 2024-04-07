@@ -29,6 +29,10 @@
     align-content: center;
 }
 
+.app-name {
+    font-style: italic;
+}
+
 .Welcome {
     font-size: calc(18px + 2vmin);
     font-weight: 700;
@@ -38,11 +42,6 @@
 .UserLogin {
     font-weight: 600;
     font-size: x-large;
-}
-
-.login-info::placeholder {
-    color: white;
-    font-weight: 700;
 }
 
 .login-info {
@@ -56,4 +55,15 @@
               -4px -4px 6px 0 rgba(116, 125, 136, .2), 
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.login-info::placeholder {
+    color: white;
+    font-weight: 700;
+}
+
+input[type=text] {
+    color: white;
+    font-weight: 700;
+    border: none;
 }
