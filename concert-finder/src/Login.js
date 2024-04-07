@@ -40,6 +40,12 @@ const Login = () => {
                     placeholder='Password'
                 >
                 </input>
+
+                <button
+                    id="loginButton"
+                >
+                    Login
+                </button>
             </div>
         </div>
       </div>
