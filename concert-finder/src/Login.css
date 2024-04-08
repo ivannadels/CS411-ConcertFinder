@@ -16,7 +16,7 @@
 
 .left-side {
     grid-column: 1;
-    background: linear-gradient(90deg,#f1ee8e, #e1a2ff);
+    background: linear-gradient(90deg,#f6d864, #e1a2ff);
     box-shadow:  inset -4px -4px 6px 0 rgba(255,255,255,.4), inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
     border-radius: 20px;
     color: white;
@@ -45,7 +45,7 @@
 }
 
 .login-info {
-    background: linear-gradient(90deg,#f1ee8e, #e1a2ff);
+    background: linear-gradient(90deg,#f6d864, #e1a2ff);
     height: 15px;
     border: none;
     border-radius: 30px;
