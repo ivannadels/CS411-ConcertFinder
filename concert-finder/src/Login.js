@@ -1,9 +1,16 @@
 import React from 'react';
 import './Login.css';
+import { useNavigate } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import background from "./imgs/concert-img.png"
+import './YourPreferences.js'
 
 const Login = () => {
+
+  const navigate = useNavigate();
+  const gotToMain=()=>{
+    navigate("/YourPreferences");
+  };
     return (
         <div className="background" style={{ backgroundImage: `url(${background})`}}>
            <div className="Login"> 
@@ -41,15 +48,16 @@ const Login = () => {
                 >
                 </input>
 
-                <button
-                    id="loginButton"
-                >
-                    Login
+                <button 
+                onClick={()=>gotToMain()} 
+                className="Button" 
+                id="loginButton">
+                Login
                 </button>
             </div>
         </div>
       </div>
-    )
+    );
 }      
 
 export default Login;
