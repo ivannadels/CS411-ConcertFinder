@@ -15,8 +15,8 @@ spotify_bp = make_spotify_blueprint(
 app.register_blueprint(spotify_bp, url_prefix="/login")
 
 # Replace 'YourEnvVarNameForKey' and 'YourEnvVarNameForSecret' with the actual names of your environment variables
-TICKETMASTER_KEY = os.getenv('YourEnvVarNameForKey')
-TICKETMASTER_SECRET = os.getenv('YourEnvVarNameForSecret')
+TICKETMASTER_KEY = os.getenv('JsLud0NzAoeARJHiDUMYJKMH2VGJpQpG')
+TICKETMASTER_SECRET = os.getenv('9buo5w3RxlSsmbT8')
 
 @app.route('/')
 def home():
@@ -56,4 +56,3 @@ def concerts_for_artist():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-
