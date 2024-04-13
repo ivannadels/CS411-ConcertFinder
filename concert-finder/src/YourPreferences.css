@@ -1,25 +1,51 @@
-
-div.scrollmenu {
-    
-    overflow: auto;
-    white-space: nowrap;
+.header .h1{
+    margin-bottom: 30px;
+    font-size: small;
+}
+ .scrollmenu {
+    display: flex;
+    overflow: visible;
+    white-space: wrap;
+    width: 50vw;
   }
   
-  div.scrollmenu div {
+.scrollmenu div {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px;
+    padding: 10px;
     text-decoration: none;
-  }
-  
-  div.scrollmenu div:hover {
-    background-color: #f1ecf1;
     border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
   }
-  
-  img {
+
+  .scrollmenu .img-wrapper:hover {
+    transform: scale(1.5);
+    
+  }
+ 
+  .scrollmenu .img-wrapper {
+    background-color: #cb6ce6;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    margin: 0 2vw; /* 2vw margin on each side of an image */
+    width: calc((50vw - 8vw) / 4); /* Adjusts for 4 images */
+    height: calc((50vw - 8vw) / 4); /* Keeps the aspect ratio square for the circle */
+    flex: 0 0 calc((50vw - 8vw) / 4);
+    box-sizing: border-box;
+    display: flex; /* Use flex layout to center the image within the wrapper */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
   }
+
+  
+  .scrollmenu .img-wrapper img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: relative; 
+    transition: transform 0.3s ease;
+    
+  }
+
+  
