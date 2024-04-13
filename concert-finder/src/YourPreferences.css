@@ -1,0 +1,25 @@
+
+div.scrollmenu {
+    
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  div.scrollmenu div {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  div.scrollmenu div:hover {
+    background-color: #f1ecf1;
+    border-radius: 50%;
+  }
+  
+  img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
