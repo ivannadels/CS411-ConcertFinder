@@ -3,15 +3,27 @@
     background-size: cover;
     height: 100vh;
     width: 390vh;
+    align-content: center;
 }
 .Login {
-    max-width: 50%;
+    width: 52%;
     min-height: 50%;
+    max-height: 75%;
     background-color: white;
     display: inline-grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     border-radius: 20px;
-    margin-top: 150px;
+    align-content: center;
+}
+
+@-moz-document url-prefix() {
+    .Login {
+        margin-top: 120px;
+    }
+
+    .left-side {
+        display: grid;
+    }
 }
 
 .left-side {
@@ -21,14 +33,13 @@
     border-radius: 20px;
     color: white;
     align-content: center;
-    padding: 20px;
 }
 
 .right-side {
     grid-column: 2;
     color: #e1a2ff;
     align-content: center;
-    padding: 35px;
+    padding: 30px;
 }
 
 .app-name {
@@ -49,6 +60,7 @@
 .login-info {
     background: linear-gradient(90deg,#f6d864, #e1a2ff);
     height: 15px;
+    max-width: 70%;
     border: none;
     border-radius: 30px;
     padding: 10px 20px;
