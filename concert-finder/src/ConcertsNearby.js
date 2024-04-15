@@ -1,8 +1,13 @@
 import React from 'react';
+import Header from './Header';
+import './ConcertsNearby.css';
 
 const ConcertsNearby = () => {
     return (
-        <div>Concerts Nearby Page</div>
+        <div className='concertsNearby'>
+            <Header></Header>
+            <div className='title'>Concerts Near You</div>
+        </div>
     )
 }
 
