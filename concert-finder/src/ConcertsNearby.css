@@ -1,0 +1,14 @@
+.concertsNearby {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.title {
+    color:#cb5dff;
+    text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+    font-size: 36px;
+    font-weight: bolder;
+    position: fixed;
+    top: 90px;
+}
