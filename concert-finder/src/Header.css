@@ -12,5 +12,12 @@
     margin: 15px;
     color: white;
     font-weight: 700;
+    font-size: large;
+    letter-spacing: 0.05em;
     text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+}
+
+.headerButton:hover {
+    transition: 0.3s;
+    transform: scale(1.1)translate(-10%, -10%);
 }
