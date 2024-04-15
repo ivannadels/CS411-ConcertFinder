@@ -9,7 +9,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const gotToMain=()=>{
-    navigate("/ConcertsNearby");
+    navigate("/YourPreferences");
   };
     return (
         <div className="background" style={{ backgroundImage: `url(${background})`}}>

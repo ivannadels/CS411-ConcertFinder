@@ -23,3 +23,12 @@
     transition: 0.3s;
     transform: scale(1.1)translate(-10%, -10%);
 }
+
+.hello {
+    color: white;
+    /* position: fixed;
+    right: 15px;
+    top: 20px; */
+    font-weight: bold;
+    margin-left: 150px;
+}

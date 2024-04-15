@@ -33,6 +33,8 @@ const Header = () => {
             >
                 Your Music Profile
             </button>
+
+            <span className="hello">Hello User!</span>
         </div>
     )
 }
