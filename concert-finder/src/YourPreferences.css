@@ -1,6 +1,7 @@
-.header .h1{
-    margin-bottom: 30px;
-    font-size: small;
+.YourPreferences {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
  .scrollmenu {
     display: flex;

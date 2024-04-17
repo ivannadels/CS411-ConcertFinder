@@ -1,5 +1,7 @@
 import './YourPreferences.css';
 import mockArtistsDatabase from './MockArtistsDatabase.js';
+import Header from './Header.js'
+import './Header.css'
 // import { useNavigate } from "react-router-dom";
 // import { VscAccount } from "react-icons/vsc";
 
@@ -8,9 +10,8 @@ const YourPrefences = () => {
     console.log(artistsArray[0].images[0].url);
     return(
       <div className='YourPreferences'>
-           <header>
-                <h1>Artist Gallery</h1>
-            </header>
+           <Header>
+            </Header>
             {artistsArray.length > 0 && (
         <div className="scrollmenu">
             {artistsArray.map((artist, index) => (
