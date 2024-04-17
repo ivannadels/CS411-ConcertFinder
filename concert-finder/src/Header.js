@@ -12,6 +12,10 @@ const Header = () => {
     const goToMusicProfile=()=>  {
         navigate("/YourPreferences")
     };
+    const goToSavedConcerts=()=>  {
+        navigate("/SavedConcerts")
+    };
+
     return (
         <div className='Header'>
             <button
@@ -22,6 +26,7 @@ const Header = () => {
                 Concerts Near You
             </button>
             <button 
+                onClick={()=>goToSavedConcerts()}
                 className='headerButton'
                 id="saved-concerts"
             >
