@@ -1,13 +1,60 @@
+
 .YourPreferences {
   display: flex;
   align-content: center;
   justify-content: center;
+  overscroll-behavior: none;
+
 }
+
+.title {
+  color:#cb5dff;
+  text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+  font-size: 36px;
+  font-weight: bolder;
+  position: fixed;
+  top: 90px;
+  padding: 30px;
+  width: 100%;
+  
+}
+
+.artist-menu-container{
+  position: fixed;
+  overscroll-behavior: none;
+}
+
+.subtitle {
+  color:#cb5dff;
+  text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+  font-size: 36px;
+  font-weight: bolder;
+  padding: 20px;
+  position: absolute;
+  right: 30%;
+  transform: translateY(-100%);
+  width: 100%;
+  margin-bottom: 20px;
+  
+}
+
  .scrollmenu {
+    scrollbar-gutter: stable;
+    overscroll-behavior: none;
     display: flex;
-    overflow: visible;
+    overflow: auto;
     white-space: wrap;
-    width: 50vw;
+    width: 50%;
+    padding: 50px;
+    margin: 0 auto; 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
 .scrollmenu div {
