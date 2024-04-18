@@ -1,6 +1,5 @@
 .Listing {
     display: grid;
-    align-content: center;
 }
 
 .concertInfo {
@@ -14,12 +13,17 @@
     grid-column: 1;
 }
 
-.button {
+.tickets {
     grid-column: 2;
     margin-left: 20px;
 }
 
-.tickets {
+.saveConcert {
+    grid-column: 3;
+    margin-left: 20px;
+}
+
+.button {
     background-color: white;
     border-radius: 20px;
     border-color: #f1ee8e;

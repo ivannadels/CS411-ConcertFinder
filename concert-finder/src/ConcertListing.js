@@ -10,12 +10,16 @@ const ConcertListing = (props) => {
                 <span style={{gridColumn: '3'}}>{props.city}</span>
                 <span style={{gridColumn: '4'}}>{props.time}</span>
             </div>
-            <div className='button'>
-                <button className='tickets'>
+            <div className='tickets'>
+                <button className='button'>
                     Go to tickets
                 </button>
             </div>
-            
+            <div className='saveConcert'>
+                <button className='button'>
+                    Save Concert
+                </button>
+            </div>
         </div>
         
     )
