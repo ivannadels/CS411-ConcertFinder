@@ -1,7 +1,29 @@
 .Listing {
+    display: grid;
+    align-content: center;
+}
+
+.concertInfo {
     background-color: #cb5dff;
     border-radius: 20px;
     color: white;
     min-width: 500px;
     min-height: 35px;
+    display: grid;
+    align-content: center;
+    grid-column: 1;
+}
+
+.button {
+    grid-column: 2;
+    margin-left: 20px;
+}
+
+.tickets {
+    background-color: white;
+    border-radius: 20px;
+    border-color: #f1ee8e;
+    border-style: solid;
+    border-width: 4px;
+    padding: 8px;
 }
