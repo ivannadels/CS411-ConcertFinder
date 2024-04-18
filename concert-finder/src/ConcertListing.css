@@ -11,6 +11,7 @@
     display: grid;
     align-content: center;
     grid-column: 1;
+    /* box-shadow: inset -5px -5px 10px #926295; */
 }
 
 .tickets {
@@ -30,6 +31,7 @@
     border-style: solid;
     border-width: 4px;
     padding: 8px;
+    /* box-shadow: inset -5px -5px 10px #e2e2d7; */
 }
 
 .button:hover {
