@@ -13,7 +13,7 @@ const ConcertsNearby = () => {
         })
         .then((data) => {
             console.log(data);
-            setConcerts(data);
+            setConcerts(data._embedded.events);
         });
     }, []);
     return (
@@ -31,9 +31,10 @@ const ConcertsNearby = () => {
         <div>
             {concerts.map((concert) => (
                 <ConcertListing>
-                    artistName=concert.id
+                    artistName=concert.name
+                    location=concert.venue.name
                 </ConcertListing>
-            ))}
+            ))} 
         </div>
     )
 }
