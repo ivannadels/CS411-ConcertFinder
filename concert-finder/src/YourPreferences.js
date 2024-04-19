@@ -22,7 +22,6 @@ const YourPrefences = () => {
       <div className='YourPreferences'>
            <Header></Header>
            <div className='title'>Your Music Profile</div> 
-
            <div className='artistMenu-container'>
            <div className='subtitle'>Top Artists</div>
             {artistsArray.length > 0 && (
