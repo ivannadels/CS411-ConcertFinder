@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import { useNavigate } from "react-router-dom";
+import { VscCompass } from "react-icons/vsc";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -38,8 +39,14 @@ const Header = () => {
             >
                 Your Music Profile
             </button>
-
-            <span className="hello">Hello User!</span>
+            <span className="hello">
+            <VscCompass>
+            style={{
+                height: 30, 
+                width: 30, 
+                color: '#ffffff'}}
+            </VscCompass>
+            Hello User!</span>
         </div>
     )
 }
