@@ -168,7 +168,6 @@ const mockArtistsDatabase = {
             "type": "artist",
             "uri": "spotify:artist:2"
           }
-    // Add more artists as needed
   ]
 };
 
