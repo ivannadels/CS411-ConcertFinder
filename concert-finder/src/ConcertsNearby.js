@@ -17,17 +17,6 @@ const ConcertsNearby = () => {
         });
     }, []);
     return (
-        /* <div className='concertsNearby'>
-            <Header></Header>
-            <div className='title'>Concerts Near You</div>
-            <ConcertListing
-                artistName='Melanie Martinez'
-                location='TD Garden'
-                city='Boston'
-                time="4pm"
-            > 
-            </ConcertListing>
-        </div> */
         <div className='concertsNearby'>
             <Header></Header>
             <div className='title'>Concerts Near You</div>

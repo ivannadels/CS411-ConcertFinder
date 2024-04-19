@@ -1,5 +1,6 @@
 .Listing {
     display: grid;
+    margin-bottom: 25px;
 }
 
 .concertInfo {
