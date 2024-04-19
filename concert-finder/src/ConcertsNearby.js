@@ -12,7 +12,7 @@ const ConcertsNearby = () => {
                 return results.json();
         })
         .then((data) => {
-            console.log(data);
+            console.log(data._embedded.events);
             setConcerts(data._embedded.events);
         });
     }, []);
@@ -28,13 +28,21 @@ const ConcertsNearby = () => {
             > 
             </ConcertListing>
         </div> */
-        <div>
-            {concerts.map((concert) => (
-                <ConcertListing>
-                    artistName=concert.name
-                    location=concert.venue.name
-                </ConcertListing>
-            ))} 
+        <div className='concertsNearby'>
+            <Header></Header>
+            <div className='title'>Concerts Near You</div>
+            <div>
+                {concerts.map((concert) => (
+                    <ConcertListing
+                        artistName={concert._embedded.attractions[0].name}
+                        location={concert._embedded.venues[0].name}
+                        city={concert._embedded.venues[0].city.name}
+                        time={concert.dates.start.dateTime}
+                    >
+                    </ConcertListing> 
+                ))} 
+            </div>
+            
         </div>
     )
 }
