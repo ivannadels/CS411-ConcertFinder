@@ -26,7 +26,8 @@ const ConcertsNearby = () => {
                         artistName={concert._embedded.attractions[0].name}
                         location={concert._embedded.venues[0].name}
                         city={concert._embedded.venues[0].city.name}
-                        time={concert.dates.start.dateTime}
+                        state={concert._embedded.venues[0].state.name}
+                        datetime={concert.dates.start.dateTime}
                     >
                     </ConcertListing> 
                 ))} 
