@@ -1,22 +1,23 @@
-from flask import Flask, jsonify, request, redirect, url_for, session
+from flask import Flask
 from flask_dance.contrib.spotify import make_spotify_blueprint
 import os
 import requests
 
 app = Flask(__name__)
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
-# Replace 'YourSpotifyClientID' and 'YourSpotifyClientSecret' with your actual environment variable names
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "supersecretkey")
+# Ensure that your environment variables names in .env are SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, and SPOTIFY_REDIRECT_URI
 spotify_bp = make_spotify_blueprint(
-    client_id=os.getenv("YourSpotifyClientID"),
-    client_secret=os.getenv("YourSpotifyClientSecret"),
-    redirect_uri="http://localhost:5000/login/spotify/authorized"
+    client_id=os.getenv("SPOTIFY_CLIENT_ID"),  # Key from your .env
+    client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),  # Secret from your .env
+    redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI")  # URI from your .env
 )
 app.register_blueprint(spotify_bp, url_prefix="/login")
 
-# Replace 'YourEnvVarNameForKey' and 'YourEnvVarNameForSecret' with the actual names of your environment variables
-TICKETMASTER_KEY = os.getenv('JsLud0NzAoeARJHiDUMYJKMH2VGJpQpG')
-TICKETMASTER_SECRET = os.getenv('9buo5w3RxlSsmbT8')
+# Ensure that your environment variables names in .env are TICKETMASTER_KEY and TICKETMASTER_SECRET
+TICKETMASTER_KEY = os.getenv('TICKETMASTER_KEY')
+TICKETMASTER_SECRET = os.getenv('TICKETMASTER_SECRET')
+
 
 @app.route('/')
 def home():
