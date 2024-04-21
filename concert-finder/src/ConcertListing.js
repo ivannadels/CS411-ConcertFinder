@@ -12,9 +12,11 @@ const ConcertListing = (props) => {
                 <span style={{gridColumn: '5'}}>{props.datetime}</span>
             </div>
             <div className='tickets'>
-                <button className='button'>
-                    Go to tickets
-                </button>
+                <a href={props.url}>
+                    <button className='button'>
+                        Go to tickets
+                    </button>
+                </a>
             </div>
             <div className='saveConcert'>
                 <button className='button'>

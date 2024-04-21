@@ -29,6 +29,7 @@ const ConcertsNearby = () => {
                         city={concert._embedded.venues[0].city.name}
                         state={concert._embedded.venues[0].state.name}
                         datetime={concert.dates.start.dateTime}
+                        url={concert.url}
                     >
                     </ConcertListing> 
                 ))} 
