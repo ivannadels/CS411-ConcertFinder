@@ -31,6 +31,12 @@ const ConcertsNearby = () => {
         
     }, []); 
 
+    function formatDate (date) {
+        JSON.stringify(date)
+        const formattedDate = moment(date).format('MMMM Do YYYY');
+        return formattedDate
+    };
+
     return (
         <div className='concertsNearby'>
             <Header></Header>
@@ -45,7 +51,7 @@ const ConcertsNearby = () => {
                                 location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
                                 city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
                                 state={concert._embedded?.venues?.[0]?.state?.name || 'Unknown State'}
-                                datetime={concert.dates?.start?.localDate || 'Unknown Date'}
+                                datetime={formatDate(concert.dates?.start?.localDate) || 'Unknown Date'}
                                 url={concert.url || '#'}
                             >
                             </ConcertListing>
