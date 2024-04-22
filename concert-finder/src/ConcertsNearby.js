@@ -5,18 +5,30 @@ import ConcertListing from './ConcertListing';
 
 const ConcertsNearby = () => {
     const [concerts, setConcerts] = useState([])
-    const ARTIST = 'usher'
+    var testData = ['usher','melanie'];
 
     useEffect(() => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&city=boston`)
-            .then((results) => {
-                return results.json();
-        })
-        .then((data) => {
-            console.log(data._embedded.events);
-            setConcerts(data._embedded.events);
-        });
-    }, []);
+        const fetchForSingleArtist = async (artistName) => {
+            try {
+                const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${artistName}&locale=*&city=boston`)
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Error fetching concerts for", artistName, error)
+                return [];
+            } 
+        }
+
+        const fetchForAllArtists = async () => {
+            const allConcerts = await Promise.all(
+                testData.map((artistName) => fetchForSingleArtist(artistName)));
+            setConcerts(allConcerts.flat());
+        };
+        
+        fetchForAllArtists();
+        
+    }, []); 
+
     return (
         <div className='concertsNearby'>
             <Header></Header>
