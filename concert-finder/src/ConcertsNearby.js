@@ -36,10 +36,10 @@ const ConcertsNearby = () => {
             <div className='title'>Concerts Near You</div>
             <div>
                 {concerts.map((concert, index) => (
-                    <div>
+                    <div key={index}>
                         {concert._embedded?.events.map((concert) => (
                             <ConcertListing
-                                id={concert.id}
+                                key={concert.id}
                                 artistName={concert._embedded?.attractions?.[0]?.name || 'Unknown Artist'}
                                 location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
                                 city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
