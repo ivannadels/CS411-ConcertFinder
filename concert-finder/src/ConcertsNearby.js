@@ -5,7 +5,7 @@ import ConcertListing from './ConcertListing';
 
 const ConcertsNearby = () => {
     const [concerts, setConcerts] = useState([])
-    var testData = ['usher','melanie'];
+    var testData = ['usher','melanie', 'shakira'];
 
     useEffect(() => {
         const fetchForSingleArtist = async (artistName) => {
@@ -34,7 +34,7 @@ const ConcertsNearby = () => {
         <div className='concertsNearby'>
             <Header></Header>
             <div className='title'>Concerts Near You</div>
-            <div>
+            <div style={{position:'fixed', top:'215px'}}>
                 {concerts.map((concert, index) => (
                     <div key={index}>
                         {concert._embedded?.events.map((concert) => (
