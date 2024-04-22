@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
+import moment from 'moment';
 import './ConcertsNearby.css';
 import ConcertListing from './ConcertListing';
 
@@ -44,7 +45,7 @@ const ConcertsNearby = () => {
                                 location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
                                 city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
                                 state={concert._embedded?.venues?.[0]?.state?.name || 'Unknown State'}
-                                datetime={concert.dates?.start?.dateTime || 'Unknown Date'}
+                                datetime={concert.dates?.start?.localDate || 'Unknown Date'}
                                 url={concert.url || '#'}
                             >
                             </ConcertListing>
