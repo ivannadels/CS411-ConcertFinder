@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, redirect, url_for, session, request
 from flask_dance.contrib.spotify import make_spotify_blueprint, spotify
+from flask_apscheduler import APScheduler
 import os
 import requests
 
@@ -11,12 +12,19 @@ spotify_bp = make_spotify_blueprint(
     client_id=os.getenv("SPOTIFY_CLIENT_ID"),
     client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
     redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
-    scope='user-library-read'  # Specify additional scopes if needed
+    scope='user-library-read user-top-read playlist-read-private user-read-recently-played'
 )
 app.register_blueprint(spotify_bp, url_prefix="/login")
 
 # Ticketmaster API key
 TICKETMASTER_KEY = os.getenv('TICKETMASTER_KEY')
+
+# Initialize scheduler
+scheduler = APScheduler()
+scheduler.init_app(app)
+scheduler.start()
+
+
 
 # Routes and route handlers
 @app.route('/')
@@ -40,6 +48,35 @@ def get_top_artists():
     assert resp.ok, resp.text
     artists = [artist['name'] for artist in resp.json()['items']]
     return jsonify(artists)
+@app.route('/saved_tracks')
+def get_saved_tracks():
+    if not spotify.authorized:
+        return redirect(url_for('spotify.login'))
+    resp = spotify.get('https://api.spotify.com/v1/me/tracks')
+    if not resp.ok:
+        return "Error fetching saved tracks", 400
+    tracks = [track['track']['name'] for track in resp.json()['items']]
+    return jsonify(tracks)
+
+@app.route('/playlists')
+def get_playlists():
+    if not spotify.authorized:
+        return redirect(url_for('spotify.login'))
+    resp = spotify.get('https://api.spotify.com/v1/me/playlists')
+    if not resp.ok:
+        return "Error fetching playlists", 400
+    playlists = [playlist['name'] for playlist in resp.json()['items']]
+    return jsonify(playlists)
+
+@app.route('/listening_history')
+def get_listening_history():
+    if not spotify.authorized:
+        return redirect(url_for('spotify.login'))
+    resp = spotify.get('https://api.spotify.com/v1/me/player/recently-played')
+    if not resp.ok:
+        return "Error fetching listening history", 400
+    tracks = [item['track']['name'] for item in resp.json()['items']]
+    return jsonify(tracks)
 
 @app.route('/events/<artist_name>')
 def get_events_for_artist(artist_name):
