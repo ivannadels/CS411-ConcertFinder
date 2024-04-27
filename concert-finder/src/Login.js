@@ -35,9 +35,8 @@ const Login = () => {
         window.localStorage.setItem("token", token); // Store the token in localStorage
     }
 
-    if (token) {
-        goToMain(); // Navigate to main page after login
-    }
+
+    
 }, []);
 
     return (
@@ -86,6 +85,7 @@ const Login = () => {
                 <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
                         Login with Spotify
                 </button>
+                
             </div>
         </div>
       </div>
