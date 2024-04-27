@@ -35,6 +35,7 @@ const YourPrefences = () => {
                 console.error('Failed to fetch top artists:', error);
                 // Handle errors appropriately
             }
+
         };
 
         getTopArtists();
@@ -75,4 +76,4 @@ const YourPrefences = () => {
     
 }
 
-export default YourPrefences
+export default YourPrefences;
