@@ -24,6 +24,15 @@ const Login = () => {
     window.location.href = url;
   };
 
+  const [token, setToken] = useState("");
+  const logout = () => {
+    setToken("")
+    window.localStorage.removeItem("token");
+    if(window.localStorage.getItem("token")==null){
+        console.log("Logged Out");
+    }
+}
+
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -35,9 +44,8 @@ const Login = () => {
         window.localStorage.setItem("token", token); // Store the token in localStorage
     }
 
-    if (token) {
-        goToMain(); // Navigate to main page after login
-    }
+
+    
 }, []);
 
     return (
@@ -85,6 +93,9 @@ const Login = () => {
                 </button>
                 <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
                         Login with Spotify
+                </button>
+                <button onClick={logout} className="Button" id="spotifyLogoutButton">
+                        Logout with Spotify
                 </button>
             </div>
         </div>

@@ -11,6 +11,8 @@ import {useEffect, useState} from "react";
 
 const YourPrefences = () => {
     const [artistsArray, setArtistsArray] = useState([]);
+    const top20Genres = Array.from(new Set(artistsArray.flatMap(artist => artist.genres))).slice(0, 20);
+
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         if (!token) {
@@ -20,6 +22,7 @@ const YourPrefences = () => {
         }
 
         const getTopArtists = async () => {
+            console.log(token);
             try {
                 const { data } = await axios.get("https://api.spotify.com/v1/me/top/artists", {
                     headers: {
@@ -42,6 +45,7 @@ const YourPrefences = () => {
       <div className='YourPreferences'>
            <Header></Header>
            <div className='title'>Your Music Profile</div> 
+           <div className='artistMenu-container'>
            <div className='subtitle'>Top Artists</div>
             {artistsArray.length > 0 && (
             <div className="scrollmenu">
@@ -52,6 +56,19 @@ const YourPrefences = () => {
                 ))}    
             </div>
                 )}
+            </div>
+
+          <div className='genMenu-container'>
+          <div className='subtitle-genres'>Top Genres</div>
+          <div className="scrollmenu-genres">
+            {top20Genres.map((genre, index) => (
+              <div key={index} className="genre">
+                {genre}
+              </div>
+            ))}
+          </div>
+        </div>
+            
       </div>
       );
 

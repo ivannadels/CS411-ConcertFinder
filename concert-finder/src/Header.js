@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { VscCompass } from "react-icons/vsc";
 
@@ -15,6 +16,8 @@ const Header = () => {
     const goToSavedConcerts=()=>  {
         navigate("/SavedConcerts")
     };
+
+    
 
     return (
         <div className='Header'>
@@ -39,6 +42,13 @@ const Header = () => {
             >
                 Your Music Profile
             </button>
+            {/* <button 
+                onClick={()=>logout()}
+                className='logout'
+            >
+                Log Out
+            </button> */}
+
             <span className="hello">
             <VscCompass>
             style={{
