@@ -1,16 +1,45 @@
 import React from 'react';
+import {useEffect, useState} from "react";
 import './Login.css';
 import { useNavigate } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import background from "./imgs/concert-img.png"
 import './YourPreferences.js'
 
+const CLIENT_ID = '8ab490097dab43fea4eb13d9f162ef5a';
+const REDIRECT_URI = "http://localhost:3000";
+const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
+const RESPONSE_TYPE = 'token';
+const SCOPES = ["user-top-read"];
+
 const Login = () => {
 
   const navigate = useNavigate();
-  const gotToMain=()=>{
+  const goToMain=()=>{
     navigate("/YourPreferences");
   };
+  
+  const loginWithSpotify = () => {
+    const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&response_type=${RESPONSE_TYPE}`;
+    window.location.href = url;
+  };
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    let token = window.localStorage.getItem("token");
+
+    if (!token && hash) {
+        token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
+
+        window.location.hash = ""; // Clear hash from URL
+        window.localStorage.setItem("token", token); // Store the token in localStorage
+    }
+
+    if (token) {
+        goToMain(); // Navigate to main page after login
+    }
+}, []);
+
     return (
         <div className="background" style={{ backgroundImage: `url(${background})`}}>
            <div className="Login"> 
@@ -49,10 +78,13 @@ const Login = () => {
                 </input>
 
                 <button 
-                onClick={()=>gotToMain()} 
+                onClick={()=>goToMain()} 
                 className="Button" 
                 id="loginButton">
                 Login
+                </button>
+                <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
+                        Login with Spotify
                 </button>
             </div>
         </div>
