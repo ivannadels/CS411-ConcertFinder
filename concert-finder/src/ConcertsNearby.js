@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import moment from 'moment';
 import './ConcertsNearby.css';
+//import './server.js';
 import ConcertListing from './ConcertListing';
 
 const ConcertsNearby = () => {
@@ -11,7 +12,8 @@ const ConcertsNearby = () => {
     useEffect(() => {
         const fetchForSingleArtist = async (artistName) => {
             try {
-                const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${artistName}&locale=*&city=boston`)
+                const urlAPI = `https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${artistName}&locale=*&city=boston`;
+                const response = await fetch(urlAPI);
                 const data = await response.json();
                 return data;
             } catch (error) {
