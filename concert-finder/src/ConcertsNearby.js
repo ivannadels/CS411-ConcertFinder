@@ -13,7 +13,13 @@ const ConcertsNearby = () => {
         const fetchForSingleArtist = async (artistName) => {
             try {
                 const urlAPI = `https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${artistName}&locale=*&city=boston`;
-                const response = await fetch(urlAPI);
+                const response = await fetch(urlAPI, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'http://localhost:3000'
+                    }
+                });
                 const data = await response.json();
                 return data;
             } catch (error) {
