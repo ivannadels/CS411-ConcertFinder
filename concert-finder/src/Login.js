@@ -15,6 +15,8 @@ const SCOPES = ["user-top-read"];
 const Login = () => {
 
   const navigate = useNavigate();
+  const [location, setLocation] = useState('');
+  const [showSpotifyButton, setShowSpotifyButton] = useState(false)
   const goToMain=()=>{
     navigate("/YourPreferences");
   };
@@ -59,28 +61,21 @@ const Login = () => {
                         color: '#f1ee8e'}}>
                     </VscAccount>
                 <div className="UserLogin">
-                    User Login
+                    Get Started Below!
                 </div>
                 <input
-                    id="username"
+                    id="location"
                     className="login-info"
                     type="text"
-                    placeholder='Username'
-                >
-                </input>
-                <input
-                    id="password"
-                    className="login-info"
-                    type="text"
-                    placeholder='Password'
+                    placeholder='Enter your city'
                 >
                 </input>
 
                 <button 
-                onClick={()=>goToMain()} 
-                className="Button" 
-                id="loginButton">
-                Login
+                    onClick={()=>goToMain()} 
+                    className="Button" 
+                    id="continueButton">
+                    Continue
                 </button>
                 <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
                         Login with Spotify
