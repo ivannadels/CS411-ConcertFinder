@@ -17,6 +17,7 @@ const ConcertsNearby = (props) => {
         .then((data) => {
             console.log(data._embedded.events);
             setConcerts(data._embedded.events);
+            setLoading(false)
         });
     }, []); 
 
