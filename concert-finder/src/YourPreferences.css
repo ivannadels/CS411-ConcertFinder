@@ -1,0 +1,192 @@
+
+.YourPreferences {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  overscroll-behavior-x: none;
+}
+
+.title {
+ 
+  color:#cb5dff;
+  text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+  font-size: 36px;
+  font-weight: bolder;
+  position: fixed;
+  top: 90px;
+  padding: 50px;
+  width: 100%;
+  
+}
+
+.artistMenu-container{
+  position: fixed;
+  overscroll-behavior: none;
+  width: 100%;
+  top: 27%;
+}
+
+.subtitle {
+
+  color:#cb5dff;
+  text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+  font-size: 31px;
+  font-weight: bolder;
+  position: absolute;
+  right: 30%;
+  
+  transform: translateY(-100%);
+  width: 100%;
+  margin-bottom: 20px;
+  
+}
+
+ .scrollmenu {
+ 
+    scrollbar-gutter: stable;
+    overscroll-behavior: none;
+    display: flex;
+    overflow: auto;
+    white-space: wrap;
+    width: 100%;
+    padding: 70px;
+    justify-content: center;
+    
+    position: fixed;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+.scrollmenu div {
+    
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .scrollmenu .img-wrapper:hover {
+    transform: scale(1.5);
+    
+  }
+ 
+  .scrollmenu .img-wrapper {
+    
+    background: linear-gradient(145deg, #d974f6, #b761cf);
+    box-shadow:  5px 5px 10px #8a499c,
+             -5px -5px 10px #ff8fffc2;
+    border-radius: 50%;
+    margin: 0 2vw; /* 2vw margin on each side of an image */
+    width: calc((50vw - 8vw) / 4); /* Adjustss for 4 images */
+    height: calc((50vw - 8vw) / 4); /* Keeps the aspect ratio square for the circle */
+    flex: 0 0 calc((50vw - 8vw) / 4);
+    box-sizing: border-box;
+    display: flex; /* Use flex layout to center the image within the wrapper */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+  }
+
+  
+  .scrollmenu .img-wrapper img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: relative; 
+    transition: transform 0.3s ease;
+    
+  }
+
+  .genMenu-container{
+    position: fixed;
+  overscroll-behavior: none;
+  width: 100%;
+  top: 65%;
+  padding-bottom: 30px;
+  }
+
+  
+.subtitle-genres {
+  
+  color:#cb5dff;
+  text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+  font-size: 31px;
+  font-weight: bolder;
+  position: absolute;
+  right: 30%;
+  top: 35%;
+  transform: translateY(-100%);
+  width: 100%;
+  margin-bottom: 20px;
+
+  
+}
+
+ .scrollmenu-genres {
+
+    scrollbar-gutter: stable;
+    overscroll-behavior: none;
+    display: flex;
+    overflow: auto;
+    white-space: wrap;
+    width: 100%;
+    padding: 70px;
+    justify-content: center;
+    
+    
+    position: fixed;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+.scrollmenu-genres div {
+  background: linear-gradient(145deg, #d974f6, #b761cf);
+  box-shadow:  5px 5px 10px #8a499c,
+             -5px -5px 10px #ff8fffc2;
+    border-radius: 50%;
+    margin: 0 2vw; /* 2vw margin on each side of an image */
+    width: calc((50vw - 8vw) / 4); /* Adjustss for 4 images */
+    height: calc((50vw - 8vw) / 4); /* Keeps the aspect ratio square for the circle */
+    flex: 0 0 calc((50vw - 8vw) / 4);
+    box-sizing: border-box;
+    display: flex; /* Use flex layout to center the image within the wrapper */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+    
+
+    border: transparent;
+   
+    color: white;
+    font-weight: 700;
+    font-size: calc(8px + 2vmin);
+   
+    letter-spacing: 0.05em;
+    text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+
+  
+    text-decoration: none;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .scrollmenu-genres div:hover {
+    transform: scale(1.5);
+    
+  }
+  

@@ -1,26 +1,24 @@
 import './App.css';
-import Login from './Login.js'
+import Login from './Login.js';
+import YourPreferences from './YourPreferences.js';
+import ConcertsNearby from './ConcertsNearby.js';
+import SavedConcerts from './SavedConcerts.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Login></Login>
-    
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      <Router>
+        <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/YourPreferences" element={<YourPreferences />}></Route>
+        <Route path="/ConcertsNearby" element={<ConcertsNearby />}></Route>
+        <Route path="/SavedConcerts" element={<SavedConcerts />}></Route>
+        
+        </Routes>
+      </Router>
       
+         
     </div>
     
   );
