@@ -8,7 +8,7 @@ import ConcertListing from './ConcertListing';
 
 const ConcertsNearby = () => {
     const [concerts, setConcerts] = useState([])
-    var ARTIST = 'red sox';
+    var ARTIST = 'usher';
 
     useEffect(() => {
         fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&city=boston`)
