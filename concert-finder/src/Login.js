@@ -17,6 +17,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [location, setLocation] = useState('');
   const [showSpotifyButton, setShowSpotifyButton] = useState(false)
+  const [showLocationInput, setShowLocationInput] = useState(true)
+  const [fadeOut, setFadeOut] = useState(false);
 
   const goToMain=()=>{
     navigate("/YourPreferences");
@@ -24,6 +26,8 @@ const Login = () => {
 
   const handleClick=()=>{
     setShowSpotifyButton(true)
+    setShowLocationInput(false)
+    setFadeOut(true)
   }
   
   const loginWithSpotify = () => {
@@ -66,26 +70,30 @@ const Login = () => {
                 <div className="UserLogin">
                     Get Started Below!
                 </div>
-                <input
-                    id="location"
-                    className="login-info"
-                    type="text"
-                    placeholder='Enter your city'
-                    value={location}
-                    onChange={e => setLocation(e.target.value)}
-                >
-                </input>
+                {showLocationInput && (
+                    <input
+                        id="location"
+                        className={`login-info ${fadeOut ? 'fade-out' : ''}`}
+                        type="text"
+                        placeholder='Enter your city'
+                        value={location}
+                        onChange={e => setLocation(e.target.value)}
+                    >
+                    </input>
+                )}
 
-                <button 
-                    onClick={handleClick} 
-                    className="Button" 
-                    id="continueButton">
-                    Continue
-                </button>
+                {showLocationInput && (
+                    <button 
+                        onClick={handleClick} 
+                        className={`buttons ${fadeOut ? 'fade-out' : ''}`}
+                        id="continueButton">
+                        Continue
+                    </button>
+                )}
                 {showSpotifyButton && (
-                    <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
+                    <button onClick={loginWithSpotify} className="buttons" id="spotifyLoginButton">
                         Login with Spotify
-                </button>
+                    </button>
                 )}
             </div>
         </div>
