@@ -44,6 +44,7 @@ const Login = () => {
 
         window.location.hash = ""; // Clear hash from URL
         window.localStorage.setItem("token", token); // Store the token in localStorage
+        goToMain();
     }
 
 }, []);
