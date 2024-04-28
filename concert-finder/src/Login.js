@@ -17,9 +17,14 @@ const Login = () => {
   const navigate = useNavigate();
   const [location, setLocation] = useState('');
   const [showSpotifyButton, setShowSpotifyButton] = useState(false)
+
   const goToMain=()=>{
     navigate("/YourPreferences");
   };
+
+  const handleClick=()=>{
+    setShowSpotifyButton(true)
+  }
   
   const loginWithSpotify = () => {
     const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&response_type=${RESPONSE_TYPE}`;
@@ -37,8 +42,6 @@ const Login = () => {
         window.localStorage.setItem("token", token); // Store the token in localStorage
     }
 
-
-    
 }, []);
 
     return (
@@ -68,19 +71,22 @@ const Login = () => {
                     className="login-info"
                     type="text"
                     placeholder='Enter your city'
+                    value={location}
+                    onChange={e => setLocation(e.target.value)}
                 >
                 </input>
 
                 <button 
-                    onClick={()=>goToMain()} 
+                    onClick={handleClick} 
                     className="Button" 
                     id="continueButton">
                     Continue
                 </button>
-                <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
+                {showSpotifyButton && (
+                    <button onClick={loginWithSpotify} className="Button" id="spotifyLoginButton">
                         Login with Spotify
                 </button>
-                
+                )}
             </div>
         </div>
       </div>
