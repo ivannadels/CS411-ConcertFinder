@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import moment from 'moment';
 import './ConcertsNearby.css';
-import axios from 'axios'
-//import './server.js';
 import ConcertListing from './ConcertListing';
 
-const ConcertsNearby = () => {
+const ConcertsNearby = (props) => {
     const [concerts, setConcerts] = useState([])
-    var ARTIST = 'usher';
+    var ARTIST = props.artist;
 
     useEffect(() => {
         fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&city=boston`)
