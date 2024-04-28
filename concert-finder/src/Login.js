@@ -33,18 +33,27 @@ const Login = () => {
   const loginWithSpotify = () => {
     const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&response_type=${RESPONSE_TYPE}`;
     window.location.href = url;
+      
   };
 
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
+       
+    
+    if (hash) {
+        const newToken = hash.substring(1)
+                          .split("&")
+                          .find(elem => elem.startsWith("access_token"))
+                          .split("=")[1];
 
-    if (!token && hash) {
-        token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
-
-        window.location.hash = ""; // Clear hash from URL
-        window.localStorage.setItem("token", token); // Store the token in localStorage
-        goToMain();
+        if (newToken) {
+            token = newToken; // Update the token with the new one from URL
+            window.location.hash = ""; // Clear hash from URL
+            window.localStorage.setItem("token", token); // Store the new token in localStorage
+            console.log("Logged In");
+            goToMain(); // Only call goToMain if a new token is obtained
+        }
     }
 
 }, []);
