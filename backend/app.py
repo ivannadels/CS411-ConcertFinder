@@ -25,6 +25,7 @@ class User(db.Model):
     username = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
+    max_travel_distance = db.Column(db.Integer, nullable=False, default=30)  # Default to 30 miles/km
 
     def set_password(self, password):
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
