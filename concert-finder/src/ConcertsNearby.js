@@ -5,7 +5,8 @@ import './ConcertsNearby.css';
 import ConcertListing from './ConcertListing';
 
 const ConcertsNearby = (props) => {
-    const [concerts, setConcerts] = useState([])
+    const [concerts, setConcerts] = useState([]);
+    const [loading, setLoading] = useState(true);
     var ARTIST = props.artist;
 
     useEffect(() => {
@@ -33,18 +34,25 @@ const ConcertsNearby = (props) => {
             <Header></Header>
             <div className='title'>Concerts Near You</div>
             <div style={{position:'fixed', top:'215px'}}>
-                {concerts.map((concert) => (  
-                    <ConcertListing
-                        key={concert.id}
-                        artistName={concert._embedded?.attractions?.[0]?.name || 'Unknown Artist'}
-                        location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
-                        city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
-                        state={concert._embedded?.venues?.[0]?.state?.name || 'Unknown State'}
-                        datetime={formatDate(concert.dates?.start?.localDate, concert.dates?.start?.localTime) || 'Unknown Date'}
-                        url={concert.url || '#'}
-                    >
-                    </ConcertListing>
-                ))} 
+                {loading ? (
+                    <div>Loading...</div>
+                ) : concerts.length === 0 ? (
+                    <div>No concerts found</div>
+                ) : (
+                    concerts.map((concert) => (  
+                        <ConcertListing
+                            key={concert.id}
+                            artistName={concert._embedded?.attractions?.[0]?.name || 'Unknown Artist'}
+                            location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
+                            city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
+                            state={concert._embedded?.venues?.[0]?.state?.name || 'Unknown State'}
+                            datetime={formatDate(concert.dates?.start?.localDate, concert.dates?.start?.localTime) || 'Unknown Date'}
+                            url={concert.url || '#'}
+                        >
+                        </ConcertListing>
+                    ))
+                )}
+                 
             </div>
             
         </div>
