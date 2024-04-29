@@ -14,3 +14,8 @@
     position: fixed;
     top: 90px;
 }
+
+.buttons {
+    height: 30px;
+    padding: 6px 18px;
+}
