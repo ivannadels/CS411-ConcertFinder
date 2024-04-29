@@ -21,8 +21,10 @@
 }
 
 .listingsContainer {
-    position: relative;
+    overflow-y: auto;
+    position: fixed;
     top: 215px;
-    overflow: scroll;
+    bottom: 0;
+    max-height: calc(100vh-100px);
     scrollbar-width: none;
 }
