@@ -35,7 +35,7 @@ const ConcertsNearby = (props) => {
         <div className='concertsNearby'>
             <Header></Header>
             <div className='title'>Concerts Near You</div>
-            <div style={{position:'fixed', top:'215px'}}>
+            <div className='listingsContainer'>
                 {loading ? (
                     <div>Loading...</div>
                 ) : concerts.length === 0 ? (

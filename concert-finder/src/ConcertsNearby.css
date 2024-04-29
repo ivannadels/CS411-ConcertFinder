@@ -19,3 +19,10 @@
     height: 30px;
     padding: 6px 18px;
 }
+
+.listingsContainer {
+    position: relative;
+    top: 215px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
