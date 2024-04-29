@@ -1,15 +1,13 @@
-from flask import Flask, jsonify, redirect, request, session, Response
-import os
+from flask import Flask, jsonify, redirect, request
 import requests
 import string
 import random
 from urllib.parse import urlencode
-import json
 import base64
-from flask_session import Session
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -57,9 +55,10 @@ def get_token(user_id):
         return f"Token for user {user_id} is {user.access_token}"
     return "Token not found", 404
 
+load_dotenv()
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
 
-client_id = "8ab490097dab43fea4eb13d9f162ef5a"
-client_secret = "6cfd5077c6be481ca9cadf1a726b829a"
 redirect_uri = "http://127.0.0.1:5000/callback"  # Make sure this matches with your Spotify app settings
 
 def randomString(n):
