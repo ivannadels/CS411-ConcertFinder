@@ -27,7 +27,7 @@ TICKETMASTER_KEY = os.getenv('TICKETMASTER_KEY')
 spotify_bp = make_spotify_blueprint(
     client_id=os.getenv("SPOTIFY_CLIENT_ID"),
     client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
-    redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
+    redirect_url=os.getenv("SPOTIFY_REDIRECT_URI"),
     scope='user-library-read user-top-read playlist-read-private user-read-recently-played'
 )
 app.register_blueprint(spotify_bp, url_prefix="/login")
@@ -59,11 +59,11 @@ def update_ticketmaster_data():
             events = response.json().get('_embedded', {}).get('events', [])
             save_events(events, user_id='1')  # Replace '1' with the appropriate user ID
 
-def schedule_jobs():
-    scheduler.add_job(refresh_spotify_data, 'cron', hour=2, id='refresh_spotify')
-    scheduler.add_job(update_ticketmaster_data, 'interval', hours=6, id='update_ticketmaster')
+# def schedule_jobs():
+#     scheduler.add_job(refresh_spotify_data, 'cron', hour=2, id='refresh_spotify')
+#     # scheduler.add_job(update_ticketmaster_data, 'interval', hours=6, id='update_ticketmaster')
 
-schedule_jobs()
+# schedule_jobs()
 
 @app.route('/')
 def index():

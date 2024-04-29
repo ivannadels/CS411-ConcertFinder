@@ -10,38 +10,50 @@ import {useEffect, useState} from "react";
 
 
 const YourPrefences = () => {
+    
     const [artistsArray, setArtistsArray] = useState([]);
     const top20Genres = Array.from(new Set(artistsArray.flatMap(artist => artist.genres))).slice(0, 20);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
 
     useEffect(() => {
-        const token = window.localStorage.getItem("token");
-        if (!token) {
-            console.log("No token found. User might not be logged in.");
-            // Redirect to login or show a message
-            return;
-        }
+        // const token = window.localStorage.getItem("token");
+        // if (!token) {
+        //     console.log("No token found. User might not be logged in.");
+        //     // Redirect to login or show a message
+        //     return;
+        // }
 
         const getTopArtists = async () => {
-            console.log(token);
+            setLoading(true);
             try {
-                const { data } = await axios.get("https://api.spotify.com/v1/me/top/artists", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    },
+                const response = await fetch('http://127.0.0.1:5000/top_artists', {
+                    credentials: 'include'  // Ensures cookies are sent with the request if using session-based authentication
                 });
-                console.log(data);
-                setArtistsArray(data.items); // Assuming the data structure has an 'items' array
+                const data = await response.json();
+                console.log(data)
+                if (response.ok) {
+                    setArtistsArray(data.items);  // Assuming the Spotify API response structure
+                } else {
+                    throw new Error(data.error || 'Failed to fetch top artists');
+                }
             } catch (error) {
-                console.error('Failed to fetch top artists:', error);
-                // Handle errors appropriately
+                setError(error.message);
+            } finally {
+                setLoading(false);
             }
+    
 
         };
 
         getTopArtists();
     }, []); // Empty dependency array means this effect will only run once after the component mounts
 
-    
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
+
+
     return(
       <div className='YourPreferences'>
            <Header></Header>
