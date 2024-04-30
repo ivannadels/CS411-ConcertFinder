@@ -15,6 +15,24 @@ router.get("/", async (req, res) => {
       res.status(500).send("Error getting users");
     }
   });
+  // Get a user's location by user ID
+router.get("/location/:user_id", async (req, res) => {
+    try {
+      const user_id = req.params.user_id;
+      const collection = await db.collection("users");
+      const user = await collection.findOne({ user_id });
+      
+      if (!user) {
+        res.status(404).send("User not found");
+      } else {
+        res.status(200).send(user.location);
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error getting user's location");
+    }
+});
+
 
 // Create a new user
 router.post("/", async (req, res) => {
