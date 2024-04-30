@@ -1,3 +1,4 @@
+
 import express from "express";
 import db from "../db/connection.js";
 import { ObjectId } from "mongodb";
@@ -15,6 +16,7 @@ router.get("/", async (req, res) => {
       res.status(500).send("Error getting users");
     }
   });
+
   // Get a user's location by user ID
 router.get("/location/:user_id", async (req, res) => {
     try {
@@ -52,10 +54,9 @@ router.post("/", async (req, res) => {
   });
 
   // Update a users location by ID
-  //NOTE: HAS YET TO BE TESTED
   router.patch("/:user_id", async (req, res) => {
     try {
-      const query = { _id: new ObjectId(req.params.id) };
+      const query = ({user_id: req.params.user_id});
       const updates = {
         $set: {location: req.body.location} 
       };
@@ -70,11 +71,10 @@ router.post("/", async (req, res) => {
   });
 
   
-// Delete a user by ID
-  //NOTE: HAS YET TO BE TESTED
-router.delete("/:id", async (req, res) => {
+// Delete a user by user ID
+router.delete("/:user_id", async (req, res) => {
     try {
-      const query = { _id: new ObjectId(req.params.id) };
+      const query = ({user_id: req.params.user_id});
   
       const collection = db.collection("users");
       const result = await collection.deleteOne(query);

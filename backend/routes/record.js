@@ -23,15 +23,14 @@ router.get("/", async (req, res) => {
     }
   });
   
-  // Get a single record by record id
-  router.get("/:id", async (req, res) => {
+  // Get all records associated with a user ID
+  router.get("/:user_id", async (req, res) => {
     try {
       const collection = await db.collection("records");
-      const query = { _id: new ObjectId(req.params.id) };
-      const result = await collection.findOne(query);
+      const result = await collection.find({user_id: req.params.user_id}).toArray();
   
       if (!result) {
-        res.send("Not found").status(404);
+        res.send("Records not found for given user id").status(404);
       } else {
         res.send(result).status(200);
       }
@@ -62,7 +61,7 @@ router.get("/", async (req, res) => {
     }
   });
   
-  // Update a record by ID
+  // Update a single record by record ID
 router.patch("/:id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
@@ -80,8 +79,7 @@ router.patch("/:id", async (req, res) => {
   });
 
 
-  // Delete a record
-    //NOTE: HAS YET TO BE TESTED
+  // Delete a record by record ID
   router.delete("/:id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
@@ -96,4 +94,5 @@ router.patch("/:id", async (req, res) => {
     }
   });
 
+  // Export the router instance to be used by the server
 export default router;
