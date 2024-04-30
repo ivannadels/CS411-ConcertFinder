@@ -6,12 +6,6 @@ import { VscAccount } from "react-icons/vsc";
 import background from "./imgs/concert-img.png"
 import './YourPreferences.js'
 
-const CLIENT_ID = '8ab490097dab43fea4eb13d9f162ef5a';
-const REDIRECT_URI = "http://localhost:3000";
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-const RESPONSE_TYPE = 'token';
-const SCOPES = ["user-top-read"];
-
 const backend = "http://127.0.0.1:5000"
 
 const Login = () => {
