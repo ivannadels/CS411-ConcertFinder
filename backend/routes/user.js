@@ -52,11 +52,11 @@ router.post("/", async (req, res) => {
   });
 
   // Update a users location by ID
-  router.patch("/:id", async (req, res) => {
+  router.patch("/:user_id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
       const updates = {
-        $set: req.body,
+        $set: {location: req.body.location} 
       };
   
       let collection = await db.collection("users");
