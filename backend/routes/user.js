@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
       res.status(500).send("Error getting users");
     }
   });
+  
   // Get a user's location by user ID
 router.get("/location/:user_id", async (req, res) => {
     try {

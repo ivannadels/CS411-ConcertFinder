@@ -24,14 +24,13 @@ router.get("/", async (req, res) => {
   });
   
   // Get a single record by record id
-  router.get("/:id", async (req, res) => {
+  router.get("/:user_id", async (req, res) => {
     try {
       const collection = await db.collection("records");
-      const query = { _id: new ObjectId(req.params.id) };
-      const result = await collection.findOne(query);
+      const result = await collection.findOne({user_id: req.params.user_id});
   
       if (!result) {
-        res.send("Not found").status(404);
+        res.send("Record not found for given user id").status(404);
       } else {
         res.send(result).status(200);
       }
@@ -62,7 +61,7 @@ router.get("/", async (req, res) => {
     }
   });
   
-  // Update a record by ID
+  // Update a single record by ID
 router.patch("/:id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
