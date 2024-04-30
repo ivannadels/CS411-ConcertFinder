@@ -7,7 +7,7 @@ import ConcertListing from './ConcertListing';
 const ConcertsNearby = (props) => {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(true);
-    var ARTIST = prop.artist;
+    var ARTIST = props.artist;
     var CITY = `boston`;
 
     useEffect(() => {
