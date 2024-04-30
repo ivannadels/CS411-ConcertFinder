@@ -20,10 +20,12 @@ const YourPrefences = () => {
     const [selectedArtist, setSelectedArtist] = useState('');
 
             const handleArtistClick = (artistName) => {
+                console.log("getting concerts for: ", artistName)
                 setSelectedArtist(artistName);
                 // You could also fetch concerts here or trigger any other action
             };
             
+
     useEffect(() => {
         // const token = window.localStorage.getItem("token");
         // if (!token) {
@@ -60,8 +62,12 @@ const YourPrefences = () => {
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-
-
+    const handleBack = () => {
+        setSelectedArtist(''); // Resets the selected artist, showing the main view
+    };
+    if (selectedArtist) {
+        return <ConcertsNearby artistName={selectedArtist} onBack={handleBack}/>;
+    }
     return(
       <div className='YourPreferences'>
            <Header></Header>
@@ -74,10 +80,10 @@ const YourPrefences = () => {
                     <div key={artist.id} class="img-wrapper" onClick={() => handleArtistClick(artist.name)}>
                         <img src={artist.images[0].url} alt={artist.name} />
                     </div>
-                ))}  {selectedArtist && <ConcertsNearby artistName={selectedArtist} />}
+                ))}  
   
             </div>
-                )}
+                )}{selectedArtist && <ConcertsNearby artistName={selectedArtist} />}
             </div>
 
           <div className='genMenu-container'>
