@@ -14,3 +14,17 @@
     position: fixed;
     top: 90px;
 }
+
+.buttons {
+    height: 30px;
+    padding: 6px 18px;
+}
+
+.listingsContainer {
+    overflow-y: auto;
+    position: fixed;
+    top: 215px;
+    bottom: 0;
+    max-height: calc(100vh-100px);
+    scrollbar-width: none;
+}

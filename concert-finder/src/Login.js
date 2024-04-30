@@ -35,7 +35,7 @@ const Login = () => {
   const loginWithSpotify = () => {
     // const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&response_type=${RESPONSE_TYPE}`;
     // window.location.href = url;
-    window.location.href = backend + "/spotify_login"
+    window.location.href = backend + "/login"
   };
 
   useEffect(() => {

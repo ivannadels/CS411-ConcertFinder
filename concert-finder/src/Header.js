@@ -3,6 +3,7 @@ import './Header.css';
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { VscCompass } from "react-icons/vsc";
+import './Login.css'
 
 const Header = () => {
     const navigate = useNavigate();
@@ -51,7 +52,7 @@ const Header = () => {
             >
                 Your Music Profile
             </button>
-            <button onClick={logout} className="Button" id="spotifyLogoutButton">
+            <button onClick={logout} className="buttons" id="spotifyLogoutButton">
                         Logout with Spotify
             </button>
 
