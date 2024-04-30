@@ -7,6 +7,8 @@ import './Login.css'
 
 const Header = () => {
     const navigate = useNavigate();
+    
+const backend = "http://127.0.0.1:5000"
 
     const goToConcertsNearby=()=> {
         navigate("/ConcertsNearby")
@@ -21,23 +23,19 @@ const Header = () => {
     const [token, setToken] = useState("");
 
     const logout = () => {
-        setToken("");
-        window.localStorage.removeItem("token");
-        if(window.localStorage.getItem("token")==null){
-            console.log("Logged Out");
-        }
-        navigate("/")
+        window.location.href = backend + "/logout"
+          
     }
 
     return (
         <div className='Header'>
-            <button
+            {/* <button
                 onClick={()=>goToConcertsNearby()}
                 className="headerButton"
                 id="concerts-nearby"
             >
                 Concerts Near You
-            </button>
+            </button> */}
             <button 
                 onClick={()=>goToSavedConcerts()}
                 className='headerButton'
