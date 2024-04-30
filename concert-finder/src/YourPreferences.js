@@ -24,6 +24,7 @@ const YourPrefences = () => {
                 setSelectedArtist(artistName);
                 // You could also fetch concerts here or trigger any other action
             };
+            
 
     useEffect(() => {
         // const token = window.localStorage.getItem("token");
@@ -61,8 +62,12 @@ const YourPrefences = () => {
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-
-
+    const handleBack = () => {
+        setSelectedArtist(''); // Resets the selected artist, showing the main view
+    };
+    if (selectedArtist) {
+        return <ConcertsNearby artistName={selectedArtist} onBack={handleBack}/>;
+    }
     return(
       <div className='YourPreferences'>
            <Header></Header>

@@ -3,11 +3,13 @@ import Header from './Header';
 import moment from 'moment';
 import './ConcertsNearby.css';
 import ConcertListing from './ConcertListing';
+import YourPrefences from './YourPreferences';
 
 const ConcertsNearby = (props) => {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(true);
     var ARTIST = props.artistName;
+    var onBack = props.onBack;
     var CITY = `boston`;
     
     useEffect(() => {
@@ -38,11 +40,16 @@ const ConcertsNearby = (props) => {
         console.log(time)
         return formattedDate + ' ' + formattedTime
     };
-
+    const handleBack = () => {
+        return YourPrefences; // Resets the selected artist, showing the main view
+    };
     return (
         <div className='concertsNearby'>
+            <button onClick={handleBack}>Back to Artists</button>
             <Header></Header>
+            
             <div className='title'>Concerts Near You</div>
+            
             <div className='listingsContainer'>
                 {loading ? (
                     <div>Loading...</div>
