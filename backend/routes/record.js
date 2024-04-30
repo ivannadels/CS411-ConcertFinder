@@ -79,6 +79,45 @@ router.patch("/:id", async (req, res) => {
     }
   });
 
+  // Route to set a user's location
+router.patch("/location/:userId", async (req, res) => {
+  try {
+      // Extract the user ID from the request parameters
+      const userId = req.params.userId;
+
+      // Extract the location from the request body
+      const { location } = req.body;
+
+      // Check if the user exists
+      const collection = await db.collection("users");
+      const existingUser = await collection.findOne({ _id: new ObjectId(userId) });
+
+      if (existingUser) {
+          // If the user exists, update the location
+          await collection.updateOne(
+              { _id: new ObjectId(userId) }, // Filter by user ID
+              { $set: { location: location } } // Set the location field
+          );
+
+          // Send a success response
+          res.send({ message: "User location updated successfully" }).status(200);
+      } else {
+          // If the user doesn't exist, create a new user with the specified location
+          await collection.insertOne({
+              _id: new ObjectId(userId),
+              location: location
+          });
+
+          // Send a success response
+          res.send({ message: "New user created with location" }).status(201);
+      }
+  } catch (error) {
+      // Handle errors
+      console.error(error);
+      res.status(500).send("Error setting user's location");
+  }
+});
+
   
   // Delete a record
   router.delete("/:id", async (req, res) => {
