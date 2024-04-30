@@ -81,6 +81,7 @@ router.patch("/:id", async (req, res) => {
 
 
   // Delete a record
+    //NOTE: HAS YET TO BE TESTED
   router.delete("/:id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
