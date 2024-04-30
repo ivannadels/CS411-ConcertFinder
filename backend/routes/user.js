@@ -56,7 +56,7 @@ router.post("/", async (req, res) => {
   //NOTE: HAS YET TO BE TESTED
   router.patch("/:user_id", async (req, res) => {
     try {
-      const query = { user_id: new ObjectId(req.params.user_id) };
+      const query = ({user_id: req.params.user_id});
       const updates = {
         $set: {location: req.body.location} 
       };
@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
   //NOTE: HAS YET TO BE TESTED
 router.delete("/:user_id", async (req, res) => {
     try {
-      const query = { user_id: new ObjectId(req.params.user_id) };
+      const query = ({user_id: req.params.user_id});
   
       const collection = db.collection("users");
       const result = await collection.deleteOne(query);
