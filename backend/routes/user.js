@@ -20,9 +20,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
       const newDocument = {
-        name: req.body.name, // user name
-        email: req.body.email, // user email
-        // Add more fields as needed
+        user_id: req.body.user_id, // user id
+        location: req.body.location, // user location
       };
   
       const collection = await db.collection("users");
