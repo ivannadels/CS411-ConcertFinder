@@ -4,6 +4,7 @@ import Header from './Header.js'
 import axios from 'axios';
 import './Header.css'
 import {useEffect, useState} from "react";
+import ConcertsNearby from './ConcertsNearby.js';
 
 // import { useNavigate } from "react-router-dom";
 // import { VscAccount } from "react-icons/vsc";
@@ -16,7 +17,13 @@ const YourPrefences = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const [selectedArtist, setSelectedArtist] = useState('');
 
+            const handleArtistClick = (artistName) => {
+                setSelectedArtist(artistName);
+                // You could also fetch concerts here or trigger any other action
+            };
+            
     useEffect(() => {
         // const token = window.localStorage.getItem("token");
         // if (!token) {
@@ -24,6 +31,7 @@ const YourPrefences = () => {
         //     // Redirect to login or show a message
         //     return;
         // }
+        
 
         const getTopArtists = async () => {
             setLoading(true);
@@ -63,10 +71,11 @@ const YourPrefences = () => {
             {artistsArray.length > 0 && (
             <div className="scrollmenu">
                 {artistsArray.map((artist) => (
-                    <div key={artist.id} class="img-wrapper">
+                    <div key={artist.id} class="img-wrapper" onClick={() => handleArtistClick(artist.name)}>
                         <img src={artist.images[0].url} alt={artist.name} />
                     </div>
-                ))}    
+                ))}  {selectedArtist && <ConcertsNearby artistName={selectedArtist} />}
+  
             </div>
                 )}
             </div>
