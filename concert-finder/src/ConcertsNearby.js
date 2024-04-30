@@ -42,7 +42,10 @@ const ConcertsNearby = (props) => {
     };
 
     const handleBack = () => {
-        return YourPreferences; // Resets the selected artist, showing the main view
+        // Resets the selected artist, showing the main view
+        if (props.onBack) {
+            props.onBack()
+        }   
     }
 
     return (
