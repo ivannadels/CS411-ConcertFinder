@@ -4,10 +4,10 @@ import moment from 'moment';
 import './ConcertsNearby.css';
 import ConcertListing from './ConcertListing';
 
-const ConcertsNearby = (props) => {
+const ConcertsNearby = () => {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(true);
-    var ARTIST = props.artist;
+    var ARTIST = `sza`;
     var CITY = `boston`;
 
     useEffect(() => {
@@ -16,9 +16,17 @@ const ConcertsNearby = (props) => {
                 return results.json();
         })
         .then((data) => {
-            console.log(data._embedded.events);
-            setConcerts(data._embedded.events);
-            setLoading(false)
+            if (data._embedded && data._embedded.events) {
+                console.log(data._embedded.events);
+                setConcerts(data._embedded.events);
+            } else {
+                setConcerts([]);
+            }
+            setLoading(false);
+        })
+        .catch((error) => {
+            console.error('Error fetching concerts:', error);
+            setLoading(false);
         });
     }, []); 
 
