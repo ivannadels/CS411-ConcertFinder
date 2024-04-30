@@ -7,11 +7,11 @@ import ConcertListing from './ConcertListing';
 const ConcertsNearby = (props) => {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(true);
-    var ARTIST = props.artist;
+    var ARTIST = props.artistName;
     var CITY = `boston`;
-
+    
     useEffect(() => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&city=${CITY}`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&`)
             .then((results) => {
                 return results.json();
         })
