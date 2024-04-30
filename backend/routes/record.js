@@ -79,26 +79,7 @@ router.patch("/:id", async (req, res) => {
     }
   });
 
-// Create a new record
-router.post("/users", async (req, res) => {
-  try {
-    const newDocument = {
-      user_id: req.body.user_id,  //user id
-      location: req.body.location,  //user location 
-    };
 
-    const collection = await db.collection("users");
-    const result = await collection.insertOne(newDocument);
-    res.send(result).status(204);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error adding record");
-  }
-});
-
- 
-
-  
   // Delete a record
   router.delete("/:id", async (req, res) => {
     try {
