@@ -1,9 +1,6 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "axios": "^1.6.8"
-=======
+    "axios": "^1.6.8",
     "react-dom": "^18.2.0"
->>>>>>> front_end
   }
 }
