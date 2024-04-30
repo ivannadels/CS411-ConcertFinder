@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
     }
   });
   
-  // Get a single record by id
+  // Get a single record by record id
   router.get("/:id", async (req, res) => {
     try {
       const collection = await db.collection("records");
