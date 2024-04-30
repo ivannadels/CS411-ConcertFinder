@@ -52,6 +52,7 @@ router.post("/", async (req, res) => {
   });
 
   // Update a users location by ID
+  //NOTE: HAS YET TO BE TESTED
   router.patch("/:user_id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
@@ -70,6 +71,7 @@ router.post("/", async (req, res) => {
 
   
 // Delete a user by ID
+  //NOTE: HAS YET TO BE TESTED
 router.delete("/:id", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
