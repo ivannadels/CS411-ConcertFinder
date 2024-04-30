@@ -1,3 +1,4 @@
+
 import express from "express";
 import db from "../db/connection.js";
 import { ObjectId } from "mongodb";
@@ -53,7 +54,6 @@ router.post("/", async (req, res) => {
   });
 
   // Update a users location by ID
-  //NOTE: HAS YET TO BE TESTED
   router.patch("/:user_id", async (req, res) => {
     try {
       const query = ({user_id: req.params.user_id});
@@ -72,7 +72,6 @@ router.post("/", async (req, res) => {
 
   
 // Delete a user by user ID
-  //NOTE: HAS YET TO BE TESTED
 router.delete("/:user_id", async (req, res) => {
     try {
       const query = ({user_id: req.params.user_id});

@@ -94,5 +94,5 @@ router.patch("/:id", async (req, res) => {
     }
   });
 
-  // Export the router instance to be used by the server.
+  // Export the router instance to be used by the server
 export default router;
