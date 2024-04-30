@@ -45,12 +45,12 @@ router.get("/", async (req, res) => {
   router.post("/", async (req, res) => {
     try {
       const newDocument = {
-        id: req.body.id,
-        user_id: req.body.user_id,
-        artist: req.body.artist,
-        venue: req.body.venue,
-        location: req.body.location,
-        date: req.body.date,
+        id: req.body.id,  //concert id
+        user_id: req.body.user_id,  //user id
+        artist: req.body.artist,  //artist name
+        venue: req.body.venue,  //venue name
+        location: req.body.location,  //location of the venue
+        date: req.body.date, //date of the concert
       };
   
       const collection = await db.collection("records");
@@ -79,44 +79,24 @@ router.patch("/:id", async (req, res) => {
     }
   });
 
-  // Route to set a user's location
-router.patch("/location/:userId", async (req, res) => {
+// Create a new record
+router.post("/users", async (req, res) => {
   try {
-      // Extract the user ID from the request parameters
-      const userId = req.params.userId;
+    const newDocument = {
+      user_id: req.body.user_id,  //user id
+      location: req.body.location,  //user location 
+    };
 
-      // Extract the location from the request body
-      const { location } = req.body;
-
-      // Check if the user exists
-      const collection = await db.collection("users");
-      const existingUser = await collection.findOne({ _id: new ObjectId(userId) });
-
-      if (existingUser) {
-          // If the user exists, update the location
-          await collection.updateOne(
-              { _id: new ObjectId(userId) }, // Filter by user ID
-              { $set: { location: location } } // Set the location field
-          );
-
-          // Send a success response
-          res.send({ message: "User location updated successfully" }).status(200);
-      } else {
-          // If the user doesn't exist, create a new user with the specified location
-          await collection.insertOne({
-              _id: new ObjectId(userId),
-              location: location
-          });
-
-          // Send a success response
-          res.send({ message: "New user created with location" }).status(201);
-      }
-  } catch (error) {
-      // Handle errors
-      console.error(error);
-      res.status(500).send("Error setting user's location");
+    const collection = await db.collection("users");
+    const result = await collection.insertOne(newDocument);
+    res.send(result).status(204);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error adding record");
   }
 });
+
+ 
 
   
   // Delete a record
