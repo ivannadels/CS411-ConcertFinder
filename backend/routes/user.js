@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
   
       const collection = await db.collection("users");
       const result = await collection.insertOne(newDocument);
-      res.send(result).status(204);
+      res.send(result).status(200);
     } catch (err) {
       console.error(err);
       res.status(500).send("Error adding user");
