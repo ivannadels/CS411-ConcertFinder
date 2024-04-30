@@ -20,11 +20,18 @@
     padding: 6px 18px;
 }
 
+.backContainer {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+}
+
 .listingsContainer {
     overflow-y: auto;
     position: fixed;
     top: 215px;
-    bottom: 0;
+    bottom: 55px;
     max-height: calc(100vh-100px);
     scrollbar-width: none;
 }
