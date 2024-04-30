@@ -159,41 +159,41 @@ def get_top_artists():
         # Log or handle response errors here
         return jsonify({"error": "Failed to fetch top artists", "details": response.text}), response.status_code
 
-@app.route('/saved_tracks')
-def get_saved_tracks():
-    token, error = get_token(1)
-    if error:
-        return jsonify({"error": error}), 401
+# @app.route('/saved_tracks')
+# def get_saved_tracks():
+#     token, error = get_token(1)
+#     if error:
+#         return jsonify({"error": error}), 401
 
-    response = requests.get('https://api.spotify.com/v1/me/tracks', headers={'Authorization': f'Bearer {token}'})
-    if response.ok:
-        tracks = [track['track']['name'] for track in response.json()['items']]
-        return jsonify(tracks)
-    return jsonify({"error": "Error fetching saved tracks", "details": response.text}), response.status_code
+#     response = requests.get('https://api.spotify.com/v1/me/tracks', headers={'Authorization': f'Bearer {token}'})
+#     if response.ok:
+#         tracks = [track['track']['name'] for track in response.json()['items']]
+#         return jsonify(tracks)
+#     return jsonify({"error": "Error fetching saved tracks", "details": response.text}), response.status_code
 
-@app.route('/playlists')
-def get_playlists():
-    token, error = get_token(1)
-    if error:
-        return jsonify({"error": error}), 401
+# @app.route('/playlists')
+# def get_playlists():
+#     token, error = get_token(1)
+#     if error:
+#         return jsonify({"error": error}), 401
 
-    response = requests.get('https://api.spotify.com/v1/me/playlists', headers={'Authorization': f'Bearer {token}'})
-    if response.ok:
-        playlists = [playlist['name'] for playlist in response.json()['items']]
-        return jsonify(playlists)
-    return jsonify({"error": "Error fetching playlists", "details": response.text}), response.status_code
+#     response = requests.get('https://api.spotify.com/v1/me/playlists', headers={'Authorization': f'Bearer {token}'})
+#     if response.ok:
+#         playlists = [playlist['name'] for playlist in response.json()['items']]
+#         return jsonify(playlists)
+#     return jsonify({"error": "Error fetching playlists", "details": response.text}), response.status_code
 
-@app.route('/listening_history')
-def get_listening_history():
-    token, error = get_token(1)
-    if error:
-        return jsonify({"error": error}), 401
+# @app.route('/listening_history')
+# def get_listening_history():
+#     token, error = get_token(1)
+#     if error:
+#         return jsonify({"error": error}), 401
 
-    response = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers={'Authorization': f'Bearer {token}'})
-    if response.ok:
-        tracks = [item['track']['name'] for item in response.json()['items']]
-        return jsonify(tracks)
-    return jsonify({"error": "Error fetching listening history", "details": response.text}), response.status_code
+#     response = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers={'Authorization': f'Bearer {token}'})
+#     if response.ok:
+#         tracks = [item['track']['name'] for item in response.json()['items']]
+#         return jsonify(tracks)
+#     return jsonify({"error": "Error fetching listening history", "details": response.text}), response.status_code
 
 
 if __name__ == '__main__':
