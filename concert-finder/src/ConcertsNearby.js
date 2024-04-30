@@ -1,79 +1,60 @@
 import React, { useState, useEffect } from 'react';
+import { getConcertsForArtistCity } from './apiServices'; // make sure to import the new function
 import Header from './Header';
-import moment from 'moment';
 import './ConcertsNearby.css';
 import ConcertListing from './ConcertListing';
-import YourPrefences from './YourPreferences';
+import YourPreferences from './YourPreferences';
 
-const ConcertsNearby = (props) => {
+const ConcertsNearby = ({ artistName, city = 'Boston' }) => {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(true);
-    var ARTIST = props.artistName;
-    var onBack = props.onBack;
-    var CITY = `boston`;
     
     useEffect(() => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&`)
-            .then((results) => {
-                return results.json();
-        })
-        .then((data) => {
+        fetchConcerts(artistName, city);
+    }, [artistName, city]);
+
+    const fetchConcerts = async (artistName, city) => {
+        setLoading(true);
+        try {
+            const data = await getConcertsForArtistCity(artistName, city);
             if (data._embedded && data._embedded.events) {
-                console.log(data._embedded.events);
                 setConcerts(data._embedded.events);
             } else {
                 setConcerts([]);
             }
-            setLoading(false);
-        })
-        .catch((error) => {
+        } catch (error) {
             console.error('Error fetching concerts:', error);
+        } finally {
             setLoading(false);
-        });
-    }, []); 
+        }
+    };
 
-    function formatDate (date, time) {
-        JSON.stringify(date)
-        JSON.stringify(time)
-        const formattedDate = moment(date).format('MMMM Do YYYY');
-        const formattedTime = moment(time, "HH:mm:ss").format('h:mm a')
-        console.log(time)
-        return formattedDate + ' ' + formattedTime
-    };
-    const handleBack = () => {
-        return YourPrefences; // Resets the selected artist, showing the main view
-    };
     return (
         <div className='concertsNearby'>
-            <button onClick={handleBack}>Back to Artists</button>
-            <Header></Header>
-            
+            <Header />
+            <button onClick={() => YourPreferences()}>Back to Preferences</button>
             <div className='title'>Concerts Near You</div>
-            
             <div className='listingsContainer'>
                 {loading ? (
                     <div>Loading...</div>
                 ) : concerts.length === 0 ? (
-                    <div>No concerts found</div>
+                    <div>No concerts found for {artistName} in {city}</div>
                 ) : (
-                    concerts.map((concert) => (  
+                    concerts.map((concert) => (
                         <ConcertListing
                             key={concert.id}
                             artistName={concert._embedded?.attractions?.[0]?.name || 'Unknown Artist'}
                             location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
                             city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
                             state={concert._embedded?.venues?.[0]?.state?.name || 'Unknown State'}
-                            datetime={formatDate(concert.dates?.start?.localDate, concert.dates?.start?.localTime) || 'Unknown Date'}
+                            datetime={concert.dates?.start?.localDate || 'Unknown Date'}
                             url={concert.url || '#'}
-                        >
-                        </ConcertListing>
+                        />
                     ))
                 )}
-                 
             </div>
-            
         </div>
-    )
+    );
 }
 
-export default ConcertsNearby
+export default ConcertsNearby;

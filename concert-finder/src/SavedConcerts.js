@@ -1,49 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import Header from './Header.js';
+import Header from './Header';
 import './SavedConcerts.css';
-import { getSavedConcerts, removeConcert } from './apiServices'; // ensure this path is correct
+import { getSavedConcerts, removeConcert } from './apiServices'; // Adjust the path as needed
 
 const SavedConcerts = () => {
     const [concerts, setConcerts] = useState([]);
 
+    // Fetch concerts on component mount
     useEffect(() => {
+        const fetchConcerts = async () => {
+            try {
+                const data = await getSavedConcerts();
+                setConcerts(data);
+            } catch (error) {
+                console.error('Error fetching saved concerts:', error);
+                
+            }
+        };
+
         fetchConcerts();
     }, []);
 
-    const fetchConcerts = async () => {
-        try {
-            const data = await getSavedConcerts();
-            setConcerts(data);
-        } catch (error) {
-            console.error('Failed to fetch concerts:', error);
-            // show an error message
-        }
-    };
-
+    // Handle concert removal
     const handleRemove = async (id) => {
         try {
             await removeConcert(id);
-            fetchConcerts(); // Refresh the concerts after deletion
+            // Filter out the removed concert without needing to refetch from the server
+            setConcerts(concerts.filter(concert => concert._id !== id));
         } catch (error) {
-            console.error('Failed to remove concert:', error);
-            //  show an error message
+            console.error('Error removing concert:', error);
+            
         }
     };
 
     return (
         <div className='SavedConcerts'>
             <Header />
-            <div className='title'>Your Saved Concerts</div>
+            <h2>Your Saved Concerts</h2>
             <ul>
-                {concerts.map((concert) => (
-                    <li key={concert._id}>
-                        {concert.artist} at {concert.venue} - {concert.date}
-                        <button onClick={() => handleRemove(concert._id)}>Remove</button>
-                    </li>
-                ))}
+                {concerts.length > 0 ? (
+                    concerts.map(concert => (
+                        <li key={concert._id}>
+                            {concert.artist} at {concert.venue} - {new Date(concert.date).toLocaleDateString()}
+                            <button onClick={() => handleRemove(concert._id)}>Remove</button>
+                        </li>
+                    ))
+                ) : (
+                    <p>No saved concerts to display.</p>
+                )}
             </ul>
         </div>
     );
-}
+};
 
 export default SavedConcerts;
