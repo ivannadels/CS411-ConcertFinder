@@ -3,7 +3,6 @@ import Header from './Header';
 import './ConcertsNearby.css';
 import moment from 'moment';
 import ConcertListing from './ConcertListing';
-import YourPreferences from './YourPreferences';
 
 const ConcertsNearby = (props) => {
     const [concerts, setConcerts] = useState([]);
@@ -13,23 +12,27 @@ const ConcertsNearby = (props) => {
     var onBack = props.onBack;
 
     useEffect(() => {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events?apikey=1SEJhoe033bJEB4YcShG5T5CzLsmjHqs&keyword=${ARTIST}&locale=*&location=${CITY}`)
-            .then((results) => {
-                return results.json();
-        })
-        .then((data) => {
-            if (data._embedded && data._embedded.events) {
-                setConcerts(data._embedded.events);
-            } else {
-                setConcerts([]);
+        const getConcerts = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/concerts?artist=${encodeURIComponent(ARTIST)}&city=${encodeURIComponent(CITY)}`, {
+                    credentials: 'include'  // Ensures cookies are sent with the request if using session-based authentication
+                });
+                const data = await response.json();
+                console.log(data)
+                if (data._embedded && data._embedded.events) {
+                    setConcerts(data._embedded.events);
+                } else {
+                    setConcerts([]);
+                }
+            } catch (error) {
+                console.error('Error fetching concerts:', error);
+            } finally {
+                setLoading(false)
             }
-            setLoading(false);
-        })
-        .catch ((error) => {
-            console.error('Error fetching concerts:', error);
-            setLoading(false);
-        
-        });
+        }
+
+        getConcerts();
     }, []); 
 
     function formatDate (date, time) {
@@ -43,7 +46,7 @@ const ConcertsNearby = (props) => {
 
     const handleBack = () => {
         // Resets the selected artist, showing the main view
-        if (props.onBack) {
+        if (onBack) {
             props.onBack()
         }   
     }

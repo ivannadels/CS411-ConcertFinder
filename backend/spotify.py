@@ -202,6 +202,19 @@ def get_listening_history():
         return jsonify(tracks)
     return jsonify({"error": "Error fetching listening history", "details": response.text}), response.status_code
 
+API_KEY = os.environ.get('TICKETMASTER_API_KEY')
+@app.route('/concerts')
+def get_concerts():
+    
+    artist = request.args.get('artist')
+    city = request.args.get('city')
+    url = f'https://app.ticketmaster.com/discovery/v2/events?apikey={API_KEY}&keyword={artist}&city={city}&locale=*'
+    response = requests.get(url)
+    data = response.json()
+
+    if (response.ok):
+        return jsonify(data)
+    return jsonify({"Error fetching concerts in backend:"}, response.text)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
