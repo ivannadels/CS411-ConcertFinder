@@ -56,7 +56,7 @@ router.post("/", async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
       const updates = {
-        $set: req.body,
+        $set: {location: req.body.location} 
       };
   
       let collection = await db.collection("users");
