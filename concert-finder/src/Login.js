@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import background from "./imgs/concert-img.png"
 import './YourPreferences.js'
+import { registerUser } from './apiServices'; 
+
 
 const backend = "http://127.0.0.1:5000"
 
@@ -20,11 +22,26 @@ const Login = () => {
     navigate("/YourPreferences");
   };
 
-  const handleClick=()=>{
+  const handleClick = async ()=>{
     setShowSpotifyButton(true)
-    setShowLocationInput(false)
     setFadeOut(true)
-  }
+
+    try {
+        const response = await registerUser({
+            user_id: '1', // Assuming fixed user ID for demonstration
+            location: location
+        });
+
+        console.log('User created:', response);
+        setShowLocationInput(false); // Hide input after successful submission
+
+    } catch (error) {
+        console.error('Error creating user:', error);
+        // Optionally reset the fadeOut and Spotify button states if needed
+    }
+
+
+  };
   
   const loginWithSpotify = () => {
     // const url = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES.join(' '))}&response_type=${RESPONSE_TYPE}`;
