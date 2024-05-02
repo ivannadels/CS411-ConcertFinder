@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, url_for, request
+from flask import Flask, request, jsonify, redirect, url_for, request
 from flask_bcrypt import Bcrypt
 from flask_dance.contrib.spotify import make_spotify_blueprint, spotify
 from flask_apscheduler import APScheduler
@@ -45,6 +45,20 @@ def refresh_spotify_data():
                 mongo.db.users.update_one({'_id': user['_id']}, {'$set': {'top_artists': response.json()['items']}})
             else:
                 print(f"Failed to refresh data for user: {user['username']}")
+
+@app.route('/saveConcert', methods=['POST'])
+def save_concert():
+    concert_data = request.json
+    mongo.db.concerts.insert_one(concert_data)
+    return jsonify({"success": True}), 201
+
+@app.route('/savedConcerts', methods=['GET'])
+def get_saved_concerts():
+    concerts = list(mongo.db.concerts.find())
+    return jsonify(concerts), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 def save_events(events, user_id):
     for event in events:
