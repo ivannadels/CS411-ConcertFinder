@@ -4,33 +4,29 @@ import './ConcertsNearby.css';
 import moment from 'moment';
 import ConcertListing from './ConcertListing';
 import { getLocationForUser } from './apiServices';
+import axios from 'axios';
 
 const ConcertsNearby = (props) => {
     const [concerts, setConcerts] = useState([]);
     const [loading, setLoading] = useState(true);
     var ARTIST = props.artistName; 
     var onBack = props.onBack;
-    
-    const getLocation = async () => {
-        try{
-            const response = await getLocationForUser();
-            return response.data;
-        }
-        catch(error){
-            console.log("Error getting location from user :(");
-        }
-};
-    
+    var CITY = 'California';  
 
     useEffect(() => {
         const getConcerts = async () => {
             setLoading(true);
+            const url = new URL('http://127.0.0.1:5000/concerts');
+            const params = { artist: ARTIST, city: CITY };
+      
             try {
-                const response = await fetch(`http://127.0.0.1:5000/concerts?artist=${encodeURIComponent(ARTIST)}&city=${encodeURIComponent(getLocation)}`, {
-                    credentials: 'include'  // Ensures cookies are sent with the request if using session-based authentication
+                const response = await fetch(url, {
+                    args: params,
+                    method: 'GET'
                 });
-                const data = await response.json();
-                console.log(data)
+
+                const data = response;
+                console.log(data._embedded.events)
                 if (data._embedded && data._embedded.events) {
                     setConcerts(data._embedded.events);
                 } else {
