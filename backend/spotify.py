@@ -11,12 +11,12 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
-# app.config['CORS_HEADERS'] = 'Content-Type'
-# app.secret_key = os.getenv("FLASK_SECRET_KEY") or 'mysecretkey'
-# app.config["SESSION_TYPE"]  = "filesystem"
-# app.config['SESSION_PERMANENT'] = False
-# app.config['SESSION_COOKIE_SECURE'] = False
-# Session(app)
+
+load_dotenv('config.env')
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
+
+redirect_uri = "http://127.0.0.1:5000/callback"  # Make sure this matches with your Spotify app settings
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -54,12 +54,6 @@ def get_token(user_id):
     if user and user.access_token:
         return f"Token for user {user_id} is {user.access_token}"
     return "Token not found", 404
-
-load_dotenv()
-client_id = os.getenv('CLIENT_ID')
-client_secret = os.getenv('CLIENT_SECRET')
-
-redirect_uri = "http://127.0.0.1:5000/callback"  # Make sure this matches with your Spotify app settings
 
 def randomString(n):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))

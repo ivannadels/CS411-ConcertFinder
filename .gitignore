@@ -95,3 +95,4 @@ instance/
 
 # If using a database like PostgreSQL or MySQL, you might have a local configuration file you don't want to commit:
 config.py
+config.env

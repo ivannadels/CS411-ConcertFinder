@@ -31,7 +31,7 @@ const Login = () => {
             user_id: '1', // Assuming fixed user ID for demonstration
             location: location
         });
-
+        
         console.log('User created:', response);
         setShowLocationInput(false); // Hide input after successful submission
 

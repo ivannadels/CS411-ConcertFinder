@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
       const result = await collection.insertOne(newDocument);
       res.send(result).status(200);
     } catch (err) {
-      console.error(err);
+      console.error("Error adding user", err);
       res.status(500).send("Error adding user");
     }
   });
