@@ -17,6 +17,7 @@ export const getSavedConcerts = async () => {
 export const saveConcert = async (concertData) => {
     try {
         const response = await axios.post(`${BASE_URL}/record/`, concertData);
+        console.log('success: ', concertData);
         return response.data;
     } catch (error) {
         throw error;
@@ -26,7 +27,8 @@ export const saveConcert = async (concertData) => {
 // Remove a concert from the user's saved list
 export const removeConcert = async (concertId) => {
     try {
-        const response = await axios.delete(`${BASE_URL}/record/:${concertId}`);
+        const response = await axios.delete(`${BASE_URL}/record/${concertId}`);
+        console.log('Removed: ', concertId)
         return response.data;
     } catch (error) {
         throw error;

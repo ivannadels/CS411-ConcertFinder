@@ -22,19 +22,12 @@ const YourPrefences = () => {
             const handleArtistClick = (artistName) => {
                 console.log("getting concerts for: ", artistName)
                 setSelectedArtist(artistName);
-                // You could also fetch concerts here or trigger any other action
+                
             };
             
 
     useEffect(() => {
-        // const token = window.localStorage.getItem("token");
-        // if (!token) {
-        //     console.log("No token found. User might not be logged in.");
-        //     // Redirect to login or show a message
-        //     return;
-        // }
-        
-
+ 
         const getTopArtists = async () => {
             setLoading(true);
             try {

@@ -1,7 +1,17 @@
 import React from 'react';
 import './ConcertListing.css';
+import { saveConcert } from './apiServices';
 
 const ConcertListing = (props) => {
+console.log(props)
+    const handleAdd = async (concertData) => {
+        try {
+            await saveConcert(concertData);
+
+        } catch (error) {
+            console.error('Error adding concert:', error);
+        }
+    };
     return (
         <div className='Listing'>
             <div className='concertInfo'>
@@ -19,9 +29,7 @@ const ConcertListing = (props) => {
                 </a>
             </div>
             <div className='saveConcert'>
-                <button className='button'>
-                    Save Concert
-                </button>
+            <button className='button' onClick={() => handleAdd(props)}>Save Concert</button>
             </div>
         </div>
         

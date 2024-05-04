@@ -15,3 +15,18 @@
     position: fixed;
     top: 90px;
 }
+
+
+.buttons {
+  height: 30px;
+  padding: 6px 18px;
+}
+
+.ConcertContainer {
+  overflow-y: auto;
+  position: fixed;
+  top: 215px;
+  bottom: 55px;
+  max-height: calc(100vh-100px);
+  scrollbar-width: none;
+}

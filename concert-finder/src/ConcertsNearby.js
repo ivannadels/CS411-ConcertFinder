@@ -11,22 +11,24 @@ const ConcertsNearby = (props) => {
     const [loading, setLoading] = useState(true);
     var ARTIST = props.artistName; 
     var onBack = props.onBack;
-    var CITY = 'California';  
+    var CITY = 'Queens';  
+
 
     useEffect(() => {
         const getConcerts = async () => {
             setLoading(true);
             const url = new URL('http://127.0.0.1:5000/concerts');
-            const params = { artist: ARTIST, city: CITY };
-      
-            try {
-                const response = await fetch(url, {
-                    args: params,
-                    method: 'GET'
-                });
+            url.search = new URLSearchParams({ artist: ARTIST, city: CITY });
 
-                const data = response;
+            try {
+                const response = await fetch(url, { method: 'GET' });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
                 console.log(data._embedded.events)
+               
                 if (data._embedded && data._embedded.events) {
                     setConcerts(data._embedded.events);
                 } else {
@@ -57,6 +59,7 @@ const ConcertsNearby = (props) => {
             props.onBack()
         }   
     }
+    
 
     return (
         <div className='concertsNearby'>
@@ -70,7 +73,7 @@ const ConcertsNearby = (props) => {
                 ) : (
                     concerts.map((concert) => (
                         <ConcertListing
-                            key={concert.id}
+                            id={concert.id}
                             artist={concert._embedded?.attractions?.[0]?.name || 'Unknown Artist'}
                             location={concert._embedded?.venues?.[0]?.name || 'Unknown Venue'}
                             city={concert._embedded?.venues?.[0]?.city?.name || 'Unknown City'}
