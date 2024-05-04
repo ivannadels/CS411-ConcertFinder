@@ -1,0 +1,37 @@
+.concertsNearby {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.title {
+    color:#cb5dff;
+    text-shadow: 1px 1px 1px #c6c6c6, 1px 2px 1px #919191;
+    font-size: 36px;
+    font-weight: bolder;
+    position: fixed;
+    top: 90px;
+}
+
+.buttons {
+    height: 30px;
+    padding: 6px 18px;
+}
+
+.backContainer {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.listingsContainer {
+    overflow-y: auto;
+    position: fixed;
+    top: 215px;
+    bottom: 55px;
+    max-height: calc(100vh-100px);
+    scrollbar-width: none;
+}

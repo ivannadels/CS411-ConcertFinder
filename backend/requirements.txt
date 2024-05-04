@@ -1,0 +1,8 @@
+Flask
+Flask-CORS
+Flask-SQLAlchemy
+python-dotenv
+requests
+flask-apscheduler
+flask-dance
+flask-session

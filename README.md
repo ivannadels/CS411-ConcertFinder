@@ -1,3 +1,4 @@
+
 # 411-FinalProject -- Concert Compass 
 How to set up the environment and launch Concert Compass: 
 
@@ -7,7 +8,7 @@ Before you begin, ensure you have the following installed:
 - **Python 3 and pip**: Download and install from [Python's official website](https://python.org/).
 - **MongoDB**: Download and install using the command:
   - npm install mongodb express cors
-
+ 
 ## Clone the repository
 In bash, enter the following commands:
 - git clone https://github.com/yourusername/411-FinalProject.git
@@ -24,6 +25,7 @@ Install npm and run the front end of the application.
 - npm start
 
 This will serve the frontend at [http://localhost:3000](http://localhost:3000).
+
 
 ## Set up the backend
 In a new terminal window, do the following steps and corresponding commands:
@@ -61,3 +63,4 @@ With both servers running, you can access the full functionality of Concert Comp
 
 - **Frontend**: [http://localhost:3000](http://localhost:3000)
 - **Backend**: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
