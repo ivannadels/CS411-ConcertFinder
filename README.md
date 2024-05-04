@@ -22,13 +22,16 @@ Install npm and run the front end of the application.
 This will serve the frontend at [http://localhost:3000](http://localhost:3000).
 
 ## Set up the backend
-In a new terminal window, enter the following commands:
+In a new terminal window, do the following steps and corresponding commands:
+Navigate to the backend:
 - cd ../backend
+Install all required packages:
 - pip install -r requirements.txt
+Create .env file with CLIENT_ID and CLIENT_SECRET:
 - create .env file with 
 CLIENT_ID="your key"
 CLIENT_SECRET="your key"
-
+Run the backend server: 
 - python -m flask --app spotify.py run
 
 
